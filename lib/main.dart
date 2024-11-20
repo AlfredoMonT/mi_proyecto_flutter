@@ -17,6 +17,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // Definir las rutas de navegación
+      routes: {
+        '/second': (context) => const SecondScreen(),
+        '/third': (context) => const ThirdScreen(),
+      },
     );
   }
 }
@@ -54,7 +59,24 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(widget.title),
-            const Icon(Icons.home), // Icono en el AppBar
+            Row(
+              children: [
+                // Botón para navegar a la pantalla secundaria
+                IconButton(
+                  icon: const Icon(Icons.arrow_forward),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/second');
+                  },
+                ),
+                // Botón para navegar a la pantalla terciaria
+                IconButton(
+                  icon: const Icon(Icons.arrow_forward_ios),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/third');
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -110,6 +132,50 @@ class _MyHomePageState extends State<MyHomePage> {
             child: const Icon(Icons.remove),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// Pantalla secundaria
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context); // Regresa a la pantalla anterior
+          },
+          child: const Text('Go Back'),
+        ),
+      ),
+    );
+  }
+}
+
+// Pantalla terciaria
+class ThirdScreen extends StatelessWidget {
+  const ThirdScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Third Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context); // Regresa a la pantalla anterior
+          },
+          child: const Text('Go Back'),
+        ),
       ),
     );
   }
