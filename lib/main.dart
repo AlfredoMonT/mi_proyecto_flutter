@@ -77,8 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 20),
             // Agregar la imagen local
-            Image.asset(
-              'imagenes/POLLO.png', // Ruta de la imagen
+            Image(.asset()
+              'imagenes/a.jpeg', // Ruta de la imagen
               width: 200,
               height: 200,
             ),
